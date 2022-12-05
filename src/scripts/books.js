@@ -11,10 +11,15 @@ function getBestsellerBooks() {
         var bookTitle = bookList[i].$x(".//div[@class='p13n-sc-truncate']");
         var bookAuthor = bookList[i].$x(".//div[@class='a-row a-size-small']/a");
         var bookPrice = bookList[i].$x(".//span[@class='p13n-sc-price']");
+        var bookImage = bookList[i].$x(".//img[@class='a-dynamic-image']");
+        var bookLink = bookList[i].$x(".//a[@class='a-link-normal']");
+
         book = {
             title: bookTitle[0].getText(),
             author: bookAuthor[0].getText(),
-            price: bookPrice[0].getText()
+            price: bookPrice[0].getText(),
+            image: bookImage[0].getAttribute("src"),
+            link: bookLink[0].getAttribute("href")
         };
         books.push(book);
     }

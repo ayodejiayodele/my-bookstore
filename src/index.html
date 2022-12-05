@@ -8,7 +8,21 @@
     <body>
         <h1>Books</h1>
         <div id="books">
-            
+            <script>
+                var books = getBestsellerBooks();
+                for (var i = 0; i < books.length; i++) {
+                    var book = books[i];
+                    var bookDiv = document.createElement("div");
+                    bookDiv.className = "book";
+                    bookDiv.innerHTML = "<h2>" + book.title + "</h2>";
+                    bookDiv.innerHTML += "<p>" + book.author + "</p>";
+                    bookDiv.innerHTML += "<p>" + book.price + "</p>";
+                    bookDiv.innerHTML += "<p>" + book.image + "</p>";
+                    bookDiv.innerHTML += "<p>" + book.link + "</p>";
+
+                    document.getElementById("books").appendChild(bookDiv);
+                }
+            </script>
         </div>
     </body>
 </html>
