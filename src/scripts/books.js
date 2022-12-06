@@ -4,11 +4,20 @@ function getBestsellerBooks() {
     var books = [];
     var book = {};
     //var response to get the html content of the url using xmlHttp
-    var ajax = XmlHttp.create();
-    ajax.open("GET", url);
+    var ajax = new XMLHttpRequest();
+    var html = "";
+    //ajax set onreadystatechange functions
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            //get the html content
+            var response = ajax.responseText;
+            var html = response;
+        }
+    }
+    //open the url
+    ajax.open("GET", url, false);
+    //send the request
     ajax.send();
-    var response = ajax.getResponseText();
-    var html = response;
     //get all div elements with class zg_itemImm from the html content
     var bookList = html.match(/<div class="zg_itemImm">[\s\S]*?<\/div>/g);
     var books = [];
